@@ -25,7 +25,7 @@ Route::namespace('App\Http\Controllers\repochron') -> group(function() {
     Route::get('/{path}/{file}:log', 'MainController@log') -> where('path', '.+');
 
     // Show specific version of file identified by given Identifier
-    Route::get('/{path}/{file}:{identifier}', 'MainController@version')-> where('path', '.+');
+    Route::get('/{path}/{file}:{identifier}', 'MainController@version') -> where('path', '.+');
 });
 
 // No RepoKron Actions required, redirect to storage
