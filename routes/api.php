@@ -22,11 +22,11 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('App\Http\Controllers\repochron') -> group(function() {
 
     // Show all available versions of specific file
-    Route::get('/{path}/{file}:log', 'MainController@log') -> where('path', '.+');
+    Route::get('/{directory}/{file}::log', 'MainController@showLog') -> where('directory', '.+');
 
-    // Show specific version of file identified by given Identifier
-    Route::get('/{path}/{file}:{identifier}', 'MainController@version') -> where('path', '.+');
+    // Show specific version of file identified by Revision or Date
+    Route::get('/{directory}/{file}::{id}', 'MainController@showVersion') -> where('directory', '.+');
 });
 
 // No RepoKron Actions required, redirect to storage
-Route::get('/{path}/{file}', function($path, $file) { return redirect('/storage/'.$path.'/'.$file); }) -> where('path', '.+');
+Route::get('/{directory}/{file}', function($directory, $file) { return redirect('/storage/'.$directory.'/'.$file); }) -> where('directory', '.+');
